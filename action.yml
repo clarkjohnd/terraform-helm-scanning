@@ -1,0 +1,23 @@
+# action.yml
+name: 'Terraform Helm Scanner'
+description: 'Scans Docker images as part of Terraform Helm charts'
+inputs:
+  working-directory:
+    description: 'Directory to run the action in (must be a Git repository)'
+    required: true
+    default: "/github/workspace"
+  image-file:
+    description: 'Name of the file with the image digests (default images.yaml)'
+    required: true
+    default: "images.yaml"
+  rules-file:
+    description: 'Name of the file with the security rules (default security_rules.yaml)'
+    required: true
+    default: "security_rules.yaml"
+runs:
+  using: 'docker'
+  image: "Dockerfile"
+  env:
+    WORKING_DIRECTORY: ${{ inputs.working-directory }}
+    IMAGE_FILE: ${{ inputs.image-file }}
+    RULES_FILE: ${{ inputs.rules-file }}

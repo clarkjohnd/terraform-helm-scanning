@@ -1,0 +1,5 @@
+trivy**
+images.yaml
+security_rules.yaml
+.trivyignore
+.temp**
