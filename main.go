@@ -108,6 +108,9 @@ func imageScan() {
 				for i, level := range imagePolicy.Levels {
 					imagePolicy.Levels[i] = strings.ToUpper(level)
 				}
+				if len(imagePolicy.Levels) == 0 {
+					imagePolicy.Levels = []string{"MEDIUM", "HIGH", "CRITICAL"}
+				}
 				image.Policy = imagePolicy
 				policyFound = true
 				break
