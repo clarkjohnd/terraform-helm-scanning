@@ -162,10 +162,15 @@ func imageScan() {
 
 	}
 
-	trivyJson, err := json.Marshal(trivyScans)
+	output := JsonOutput{
+		ImagePolicies: imagePolicies,
+		ScanResults:   trivyScans,
+	}
+
+	jsonOutput, err := json.Marshal(output)
 	check(err)
 
-	Command(fmt.Sprintf(`echo "::set-output name=trivy::%s"`, trivyJson), "", false)
+	Command(fmt.Sprintf(`echo "::set-output name=trivy::%s"`, jsonOutput), "", false)
 
 	// Log text output of scans
 	// markdownTrivyFile := workingDir + "/trivytext.md"

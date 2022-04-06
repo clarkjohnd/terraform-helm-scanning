@@ -111,3 +111,8 @@ type ImagePolicy struct {
 	} `yaml:"acceptedSeverities"`
 	IgnoreUnfixed bool `yaml:"ignoreUnfixed"`
 }
+
+type JsonOutput struct {
+	ImagePolicies []ImagePolicy `json:"image_policies"`
+	ScanResults   []TrivyScan   `json:"scan_results"`
+}
